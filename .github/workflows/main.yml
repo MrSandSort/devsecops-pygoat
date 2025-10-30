@@ -81,7 +81,7 @@ jobs:
             scout-cves.txt
             scout.sarif
 
-      - name: Upload sarif to code scanning
+      - name: Upload sarif to code scan
         if: always()
         uses: github/codeql-action/upload-sarif@v3
         with:
