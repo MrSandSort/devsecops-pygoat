@@ -53,12 +53,9 @@ jobs:
         run: docker build -f Dockerfile -t myapp:local .
       
       - name: Install docker scout cli
-        run: |
-          mkdir -p ~/.docker/cli-plugins
-          curl -sSfL https://github.com/docker/scout-cli/releases/latest/download/docker-scout-linux-amd64 \
-            -o ~/.docker/cli-plugins/docker-scout
-          chmod +x ~/.docker/cli-plugins/docker-scout
-          docker scout version
+        run:  |
+          curl -fsSL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh -o install-scout.sh
+          sh install-scout.sh
       
       - name: Docker scout quickview
         run: docker scout quickview myapp:local
