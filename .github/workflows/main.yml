@@ -62,7 +62,6 @@ jobs:
         
       - name: Docker scout CVEs (table + SARIF)
         run: |
-          docker scout cves --format table myapp:local > scout-cves.txt
           docker scout cves --format sarif -o scout.sarif myapp:local 
 
       - name : Upload Scout artifacts
@@ -71,7 +70,6 @@ jobs:
         with:
           name: docker-scout-reports
           path: |
-            scout-cves.txt
             scout.sarif
 
       - name: Upload sarif to code scan
